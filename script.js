@@ -15,5 +15,7 @@ async function displayMessageAfterDelay(message, delay) {
     await new Promise(resolve => setTimeout(resolve, delay));
     
     // Display the message
-	document.getElementById('output').innerText = message;
+	const showmessage = document.createElement("p");
+    showmessage.innerText= message;
+	document.getElementById('output').appendChild(showmessage);
 }

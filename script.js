@@ -1,21 +1,17 @@
 //your JS code here. If required.
-document.getElementById('form').addEventListener('submit', async function(event) {
-    event.preventDefault(); 
-	//get the values
-    const text = document.getElementById('text').value;
+document.getElementById('btn').addEventListener('click', async function() {
+    const textInput = document.getElementById('text').value;
     const delay = parseInt(document.getElementById('delay').value);
 
-    // Display the message after the specified delay
-    await displayMessageAfterDelay(text, delay);
+    const delayFunction = (ms) => {
+        return new Promise((resolve) => {
+            setTimeout(resolve, ms);
+        });
+    };
+
+    await delayFunction(delay);
+    document.getElementById('output').textContent = textInput;
 });
 
-// Async function to introduce a delay and display the message
-async function displayMessageAfterDelay(message, delay) {
-    // Create a promise that resolves after the specified delay
-    await new Promise(resolve => setTimeout(resolve, delay));
-    
-    // Display the message
-	const showmessage = document.createElement("p");
-    showmessage.innerText= message;
-	document.getElementById('output').appendChild(showmessage);
-}
+
+
